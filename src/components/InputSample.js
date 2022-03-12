@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 const InputSample = () => {
   const [inputs, setInputs] = useState({
@@ -6,10 +6,7 @@ const InputSample = () => {
     nickname: '',
   });
   const { name, nickname } = inputs;
-
-  console.log(inputs);
-  console.log(name, '이름');
-  console.log(nickname, '닉네임');
+  const nameInput = useRef();
   // 값을 바꿔줄 함수
   const onChange = (e) => {
     const { value, name } = e.target;
@@ -25,7 +22,7 @@ const InputSample = () => {
       nickname: '',
     });
   };
-
+  console.log(nameInput);
   return (
     <>
       <div>
@@ -34,6 +31,7 @@ const InputSample = () => {
           placeholder='이름'
           onChange={onChange}
           value={name}
+          ref={nameInput}
         />
         <input
           name='nickname'
